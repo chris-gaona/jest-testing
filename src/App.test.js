@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { App, Link } from './App';
 import { shallow, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import toJson from 'enzyme-to-json'
@@ -43,6 +43,25 @@ describe('<App />', () => {
   it('should match the snapshot', () => {
     const tree = shallow(<App />)
     expect(toJson(tree)).toMatchSnapshot()
+  });
+});
+
+describe('<Link />', () => {
+  it('should create a link component that accepts an address prop', () => {
+    const wrapper = shallow(<Link address='www.google.com' />)
+    expect(wrapper.instance().props.address).toBe('www.google.com')
+  });
+
+  it('should render an a tag node href correctly', () => {
+    const wrapper = shallow(<Link address='www.google.com' />)
+    expect(wrapper.props().href).toBe('www.google.com')
+  });
+
+  it('should return null with true hide prop', () => {
+    const wrapper = shallow(<Link hide={false} />)
+    expect(wrapper.find('a').length).toBe(1)
+    wrapper.setProps({hide: true})
+    expect(wrapper.get(0)).toBeNull()
   });
 });
 // it('renders without crashing', () => {
