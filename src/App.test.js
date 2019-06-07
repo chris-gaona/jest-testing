@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { shallow, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import toJson from 'enzyme-to-json'
 
 configure({ adapter: new Adapter() })
 
@@ -37,6 +38,11 @@ describe('<App />', () => {
 
   it('should render an image with alt of logo', () => {
     expect(wrapper.find({alt: 'logo'}).exists()).toBe(true)
+  });
+
+  it('should match the snapshot', () => {
+    const tree = shallow(<App />)
+    expect(toJson(tree)).toMatchSnapshot()
   });
 });
 // it('renders without crashing', () => {
