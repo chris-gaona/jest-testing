@@ -30,6 +30,14 @@ describe('<App />', () => {
   it('should have an h1 with text', () => {
     expect(wrapper.find('h1').text()).toBe('Welcome to React')
   });
+
+  it('should render a Title component with the correct text', () => {
+    expect(wrapper.find('[text="some title"]').exists()).toBe(true)
+  });
+
+  it('should render an image with alt of logo', () => {
+    expect(wrapper.find({alt: 'logo'}).exists()).toBe(true)
+  });
 });
 // it('renders without crashing', () => {
 //   const div = document.createElement('div');
