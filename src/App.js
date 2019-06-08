@@ -9,6 +9,11 @@ function App() {
   const [input, setInput] = useState('')
   const [mainColor, setMainColor] = useState('blue')
 
+  const handleStrings = (str) => {
+    if (str === 'Hello World') return true
+    return false
+  }
+
   return (
     <div className="App">
       <header className="App-header">

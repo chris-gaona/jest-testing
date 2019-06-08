@@ -79,6 +79,11 @@ describe('<App /> shallow rendering', () => {
   //   wrapper.setProps({ hide: true })
   //   expect(App.prototype.componentWillReceiveProps.mock.calls.length).toBe(1)
   // });
+
+  // it('should return correctly for handleString function', () => {
+  //   const trueReturn = wrapper.instance().handleStrings('Hello World')
+  //   expect(trueReturn).toBe(true)
+  // });
 });
 
 describe('<App /> mount rendering', () => {
