@@ -7,6 +7,7 @@ const Title = ({ text }) => <div>{text}</div>
 function App() {
   const [on, setButtonState] = useState(false)
   const [input, setInput] = useState('')
+  const [mainColor, setMainColor] = useState('blue')
 
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
         </a>
       </header>
       <h1>Welcome to React</h1>
+      <h3 className={mainColor} onClick={() => setMainColor('red')}>Everyone is Welcome!</h3>
       <Title text='some title' />
       <ul className='unordered-list'>
         <li>Test 1</li>

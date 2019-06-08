@@ -45,6 +45,15 @@ describe('<App /> shallow rendering', () => {
     expect(toJson(tree)).toMatchSnapshot()
   });
 
+  it('should update the className with new state', () => {
+    expect(wrapper.find('.blue').length).toBe(1)
+    expect(wrapper.find('.red').length).toBe(0)
+    // wrapper.setState({ mainColor: 'red' }) // Can only use this inside a class component
+    wrapper.find('.blue').simulate('click')
+    expect(wrapper.find('.blue').length).toBe(0)
+    expect(wrapper.find('.red').length).toBe(1)
+  });
+
   it('should change the p text on button click', () => {
     const button = wrapper.find('button')
     expect(wrapper.find('.button-state').text()).toBe('No!')

@@ -34,6 +34,12 @@ exports[`<App /> mount rendering should match the snapshot 1`] = `
     <h1>
       Welcome to React
     </h1>
+    <h3
+      className="blue"
+      onClick={[Function]}
+    >
+      Everyone is Welcome!
+    </h3>
     <Title
       text="some title"
     >
@@ -106,6 +112,12 @@ exports[`<App /> shallow rendering should match the snapshot 1`] = `
   <h1>
     Welcome to React
   </h1>
+  <h3
+    className="blue"
+    onClick={[Function]}
+  >
+    Everyone is Welcome!
+  </h3>
   <Title
     text="some title"
   />
