@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App, Link } from './App';
-import { shallow, configure } from 'enzyme'
+import { shallow, configure, mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import toJson from 'enzyme-to-json'
 
 configure({ adapter: new Adapter() })
 
-describe('<App />', () => {
+describe('<App /> shallow rendering', () => {
   let wrapper = null
   beforeAll(() => {
     wrapper = shallow(<App />, { context: {}, disableLifecycleMethods: false })
@@ -18,7 +18,7 @@ describe('<App />', () => {
   });
   
   it('should contain 1 p element', () => {
-    expect(wrapper.find('p').length).toBe(1)
+    expect(wrapper.find('p').length).toBe(2)
     expect(wrapper.find('p').exists()).toBe(true)
     expect(wrapper.find('.paragraph').exists()).toBe(true)
   });
@@ -43,6 +43,37 @@ describe('<App />', () => {
   it('should match the snapshot', () => {
     const tree = shallow(<App />)
     expect(toJson(tree)).toMatchSnapshot()
+  });
+
+  it('should change the p text on button click', () => {
+    const button = wrapper.find('button')
+    expect(wrapper.find('.button-state').text()).toBe('No!')
+    button.simulate('click')
+    expect(wrapper.find('.button-state').text()).toBe('Yes!')
+  });
+
+  it('should change the title text on input change', () => {
+    const input = wrapper.find('input')
+    expect(wrapper.find('h2').text()).toBe('')
+    input.simulate('change', {currentTarget: {value: 'Chris'}})
+    expect(wrapper.find('h2').text()).toBe('Chris')
+  });
+});
+
+describe('<App /> mount rendering', () => {
+  it('should contain an h1 with correct text', () => {
+    // const wrapper = mount(<App />, { context: {}, attachTo: DOMElement})
+    const wrapper = mount(<App />)
+    expect(wrapper.find('h1').text()).toBe('Welcome to React')
+    wrapper.unmount()
+  });
+
+  // mount snapshot testing results are a little different than shallow snapshot results
+  // so tests will fail if you switch them
+  it('should match the snapshot', () => {
+    const tree = mount(<App />)
+    expect(toJson(tree)).toMatchSnapshot()
+    tree.unmount()
   });
 });
 

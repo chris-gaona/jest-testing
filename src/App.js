@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 const Title = ({ text }) => <div>{text}</div>
 
 function App() {
+  const [on, setButtonState] = useState(false)
+  const [input, setInput] = useState('')
+
   return (
     <div className="App">
       <header className="App-header">
@@ -28,6 +31,12 @@ function App() {
         <li>Test 2</li>
         <li>Test 3</li>
       </ul>
+      <p className='button-state'>{on ? 'Yes!' : 'No!'}</p>
+      <button onClick={() => setButtonState(true)}>
+        Click
+      </button>
+      <h2>{input}</h2>
+      <input onChange={e => setInput(e.currentTarget.value)} type='text' />
     </div>
   );
 }

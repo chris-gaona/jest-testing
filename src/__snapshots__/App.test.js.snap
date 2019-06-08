@@ -1,6 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> should match the snapshot 1`] = `
+exports[`<App /> mount rendering should match the snapshot 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <header
+      className="App-header"
+    >
+      <img
+        alt="logo"
+        className="App-logo"
+        src="logo.svg"
+      />
+      <p
+        className="paragraph"
+      >
+        Edit 
+        <code>
+          src/App.js
+        </code>
+         and save to reload.
+      </p>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Learn React
+      </a>
+    </header>
+    <h1>
+      Welcome to React
+    </h1>
+    <Title
+      text="some title"
+    >
+      <div>
+        some title
+      </div>
+    </Title>
+    <ul
+      className="unordered-list"
+    >
+      <li>
+        Test 1
+      </li>
+      <li>
+        Test 2
+      </li>
+      <li>
+        Test 3
+      </li>
+    </ul>
+    <p
+      className="button-state"
+    >
+      No!
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Click
+    </button>
+    <h2 />
+    <input
+      onChange={[Function]}
+      type="text"
+    />
+  </div>
+</App>
+`;
+
+exports[`<App /> shallow rendering should match the snapshot 1`] = `
 <div
   className="App"
 >
@@ -49,5 +122,20 @@ exports[`<App /> should match the snapshot 1`] = `
       Test 3
     </li>
   </ul>
+  <p
+    className="button-state"
+  >
+    No!
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Click
+  </button>
+  <h2 />
+  <input
+    onChange={[Function]}
+    type="text"
+  />
 </div>
 `;
