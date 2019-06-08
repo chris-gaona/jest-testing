@@ -67,6 +67,18 @@ describe('<App /> shallow rendering', () => {
     input.simulate('change', {currentTarget: {value: 'Chris'}})
     expect(wrapper.find('h2').text()).toBe('Chris')
   });
+
+  // Test a lifecycle hook with jest
+  // it('should call componentDidMount', () => {
+  //   jest.spyOn(App.prototype, 'componentDidMount')
+  //   expect(App.prototype.componentDidMount.mock.calls.length).toBe(1)
+  // });
+
+  // it('should call setProps to call componentWillReceiveProps', () => {
+  //   jest.spyOn(App.prototype, 'componentWillReceiveProps')
+  //   wrapper.setProps({ hide: true })
+  //   expect(App.prototype.componentWillReceiveProps.mock.calls.length).toBe(1)
+  // });
 });
 
 describe('<App /> mount rendering', () => {
